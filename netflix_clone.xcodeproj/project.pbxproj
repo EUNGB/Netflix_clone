@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		262117542669EB15002E3719 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117532669EB15002E3719 /* AppDelegate.swift */; };
 		262117562669EB15002E3719 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117552669EB15002E3719 /* SceneDelegate.swift */; };
-		262117582669EB15002E3719 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117572669EB15002E3719 /* ViewController.swift */; };
+		262117582669EB15002E3719 /* AppTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117572669EB15002E3719 /* AppTabbarController.swift */; };
 		2621175B2669EB15002E3719 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 262117592669EB15002E3719 /* Main.storyboard */; };
 		2621175D2669EB17002E3719 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2621175C2669EB17002E3719 /* Assets.xcassets */; };
 		262117602669EB17002E3719 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2621175E2669EB17002E3719 /* LaunchScreen.storyboard */; };
 		2621176B2669EB17002E3719 /* netflix_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2621176A2669EB17002E3719 /* netflix_cloneTests.swift */; };
 		262117762669EB17002E3719 /* netflix_cloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117752669EB17002E3719 /* netflix_cloneUITests.swift */; };
+		2621178A2669EE4B002E3719 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117892669EE4B002E3719 /* HomeViewController.swift */; };
+		2621178F2669F365002E3719 /* RecommendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2621178E2669F365002E3719 /* RecommendListViewController.swift */; };
+		262117942669FCE4002E3719 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117932669FCE4002E3719 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +41,7 @@
 		262117502669EB15002E3719 /* netflix_clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = netflix_clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		262117532669EB15002E3719 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		262117552669EB15002E3719 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		262117572669EB15002E3719 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		262117572669EB15002E3719 /* AppTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarController.swift; sourceTree = "<group>"; };
 		2621175A2669EB15002E3719 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2621175C2669EB17002E3719 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2621175F2669EB17002E3719 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +52,9 @@
 		262117712669EB17002E3719 /* netflix_cloneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = netflix_cloneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		262117752669EB17002E3719 /* netflix_cloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netflix_cloneUITests.swift; sourceTree = "<group>"; };
 		262117772669EB17002E3719 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		262117892669EE4B002E3719 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2621178E2669F365002E3719 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
+		262117932669FCE4002E3719 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +107,14 @@
 			children = (
 				262117532669EB15002E3719 /* AppDelegate.swift */,
 				262117552669EB15002E3719 /* SceneDelegate.swift */,
-				262117572669EB15002E3719 /* ViewController.swift */,
+				262117572669EB15002E3719 /* AppTabbarController.swift */,
 				262117592669EB15002E3719 /* Main.storyboard */,
 				2621175C2669EB17002E3719 /* Assets.xcassets */,
 				2621175E2669EB17002E3719 /* LaunchScreen.storyboard */,
 				262117612669EB17002E3719 /* Info.plist */,
+				262117892669EE4B002E3719 /* HomeViewController.swift */,
+				2621178E2669F365002E3719 /* RecommendListViewController.swift */,
+				262117932669FCE4002E3719 /* SearchViewController.swift */,
 			);
 			path = netflix_clone;
 			sourceTree = "<group>";
@@ -258,9 +267,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				262117582669EB15002E3719 /* ViewController.swift in Sources */,
+				262117942669FCE4002E3719 /* SearchViewController.swift in Sources */,
+				262117582669EB15002E3719 /* AppTabbarController.swift in Sources */,
 				262117542669EB15002E3719 /* AppDelegate.swift in Sources */,
 				262117562669EB15002E3719 /* SceneDelegate.swift in Sources */,
+				2621178F2669F365002E3719 /* RecommendListViewController.swift in Sources */,
+				2621178A2669EE4B002E3719 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
