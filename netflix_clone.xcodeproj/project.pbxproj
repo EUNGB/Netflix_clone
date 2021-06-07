@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,10 @@
 		2621178A2669EE4B002E3719 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117892669EE4B002E3719 /* HomeViewController.swift */; };
 		2621178F2669F365002E3719 /* RecommendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2621178E2669F365002E3719 /* RecommendListViewController.swift */; };
 		262117942669FCE4002E3719 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262117932669FCE4002E3719 /* SearchViewController.swift */; };
+		26C6F245266E01C500C26E9B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 26C6F244266E01C500C26E9B /* Kingfisher */; };
+		26C6F24A266E0B8100C26E9B /* Player.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C6F249266E0B8100C26E9B /* Player.storyboard */; };
+		26C6F24F266E0BB200C26E9B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6F24E266E0BB200C26E9B /* PlayerViewController.swift */; };
+		26C6F254266E0C2D00C26E9B /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6F253266E0C2D00C26E9B /* PlayerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,9 @@
 		262117892669EE4B002E3719 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2621178E2669F365002E3719 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
 		262117932669FCE4002E3719 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		26C6F249266E0B8100C26E9B /* Player.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Player.storyboard; sourceTree = "<group>"; };
+		26C6F24E266E0BB200C26E9B /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		26C6F253266E0C2D00C26E9B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C6F245266E01C500C26E9B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +123,9 @@
 				262117892669EE4B002E3719 /* HomeViewController.swift */,
 				2621178E2669F365002E3719 /* RecommendListViewController.swift */,
 				262117932669FCE4002E3719 /* SearchViewController.swift */,
+				26C6F249266E0B8100C26E9B /* Player.storyboard */,
+				26C6F24E266E0BB200C26E9B /* PlayerViewController.swift */,
+				26C6F253266E0C2D00C26E9B /* PlayerView.swift */,
 			);
 			path = netflix_clone;
 			sourceTree = "<group>";
@@ -153,6 +164,9 @@
 			dependencies = (
 			);
 			name = netflix_clone;
+			packageProductDependencies = (
+				26C6F244266E01C500C26E9B /* Kingfisher */,
+			);
 			productName = netflix_clone;
 			productReference = 262117502669EB15002E3719 /* netflix_clone.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +238,9 @@
 				Base,
 			);
 			mainGroup = 262117472669EB15002E3719;
+			packageReferences = (
+				26C6F243266E01C500C26E9B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 262117512669EB15002E3719 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -241,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				262117602669EB17002E3719 /* LaunchScreen.storyboard in Resources */,
+				26C6F24A266E0B8100C26E9B /* Player.storyboard in Resources */,
 				2621175D2669EB17002E3719 /* Assets.xcassets in Resources */,
 				2621175B2669EB15002E3719 /* Main.storyboard in Resources */,
 			);
@@ -270,6 +288,8 @@
 				262117942669FCE4002E3719 /* SearchViewController.swift in Sources */,
 				262117582669EB15002E3719 /* AppTabbarController.swift in Sources */,
 				262117542669EB15002E3719 /* AppDelegate.swift in Sources */,
+				26C6F254266E0C2D00C26E9B /* PlayerView.swift in Sources */,
+				26C6F24F266E0BB200C26E9B /* PlayerViewController.swift in Sources */,
 				262117562669EB15002E3719 /* SceneDelegate.swift in Sources */,
 				2621178F2669F365002E3719 /* RecommendListViewController.swift in Sources */,
 				2621178A2669EE4B002E3719 /* HomeViewController.swift in Sources */,
@@ -605,6 +625,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		26C6F243266E01C500C26E9B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		26C6F244266E01C500C26E9B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26C6F243266E01C500C26E9B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 262117482669EB15002E3719 /* Project object */;
 }

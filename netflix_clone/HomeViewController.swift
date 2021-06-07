@@ -9,14 +9,12 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    var awardRecommendListVC: RecommendListViewController!
-    var hotRecommendListVC: RecommendListViewController!
-    var myRecommendListVC: RecommendListViewController!
+    var awardRecommendListViewController: RecommendListViewController!
+    var hotRecommendListViewController: RecommendListViewController!
+    var myRecommendListViewController: RecommendListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.bounces = false
         // Do any additional setup after loading the view.
     }
     
@@ -26,19 +24,19 @@ class HomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "award" {
             let destinationVC = segue.destination as? RecommendListViewController
-            awardRecommendListVC = destinationVC
-            awardRecommendListVC.viewModel.updateType(.award)
-            awardRecommendListVC.viewModel.fetchItems()
+            awardRecommendListViewController = destinationVC
+            awardRecommendListViewController.viewModel.updateType(.award)
+            awardRecommendListViewController.viewModel.fetchItems()
         } else if segue.identifier == "hot" {
             let destinationVC = segue.destination as? RecommendListViewController
-            hotRecommendListVC = destinationVC
-            hotRecommendListVC.viewModel.updateType(.hot)
-            hotRecommendListVC.viewModel.fetchItems()
+            hotRecommendListViewController = destinationVC
+            hotRecommendListViewController.viewModel.updateType(.hot)
+            hotRecommendListViewController.viewModel.fetchItems()
         } else if segue.identifier == "my" {
             let destinationVC = segue.destination as? RecommendListViewController
-            myRecommendListVC = destinationVC
-            myRecommendListVC.viewModel.updateType(.my)
-            myRecommendListVC.viewModel.fetchItems()
+            myRecommendListViewController = destinationVC
+            myRecommendListViewController.viewModel.updateType(.my)
+            myRecommendListViewController.viewModel.fetchItems()
         }
     }
     

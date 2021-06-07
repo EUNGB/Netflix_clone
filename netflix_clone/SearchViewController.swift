@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var resultCollectionView: UICollectionView!
+    
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +21,53 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension SearchViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return movies.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ResultCell", for: indexPath) as? ResultCell else {
+            return UICollectionViewCell()
+        }
+        
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumbnailPath)!
+        cell.movieThumbnail!.kf.setImage(with: url)
+                
+        return cell
+    }
+}
 
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // movie 가져오기
+        let movie = movies[indexPath.item]
+        
+        // player VC에 띄우기
+        let storyboard = UIStoryboard(name: "Player", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "PlayerVC") as! PlayerViewController
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let margin: CGFloat = 8
+        let itemSpacing: CGFloat = 10
+        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
+        let height = width * 10/7
+        return CGSize(width: width, height: height)
+    }
+}
+
+class ResultCell: UICollectionViewCell {
+    @IBOutlet weak var movieThumbnail: UIImageView!
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -41,9 +80,12 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return}
         
         // 네트워킹을 통한 검색
-        SearchAPI.search(searchTerm) { ([Movie]) in
+        SearchAPI.search(searchTerm) { movies in
             // 컬렉션 뷰로 표현하기
-            
+            DispatchQueue.main.async {
+                self.movies = movies
+                self.resultCollectionView.reloadData()
+            }
         }
         
     }
@@ -84,17 +126,46 @@ class SearchAPI {
                 return
             }
             
-            let string = String(data: resultData, encoding: .utf8)
-            
-            
+            let moives = SearchAPI.parseMovies(resultData)
+            completion(moives)
+        }
+        dataTask.resume()
+    }
+    
+    static func parseMovies(_ data: Data) -> [Movie] {
+        let decoder = JSONDecoder()
+        
+        do {
+            let response = try decoder.decode(Response.self, from: data)
+            let movies = response.movies
+            return movies
+        } catch let error {
+            print("parsing error : \(error.localizedDescription)")
+            return []
         }
     }
 }
 
-struct Response {
+struct Response: Codable {
+    let resultCount: Int
+    let movies: [Movie]
     
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case movies = "results"
+    }
 }
 
-struct Movie {
+struct Movie: Codable {
+    let title: String
+    let director: String
+    let thumbnailPath: String
+    let previewURL: String
     
+    enum CodingKeys: String, CodingKey {
+        case title = "trackName"
+        case director = "artistName"
+        case thumbnailPath = "artworkUrl100"
+        case previewURL = "previewUrl"
+    }
 }

@@ -1,17 +1,9 @@
-//
-//  RecommendListViewController.swift
-//  netflix_clone
-//
-//  Created by Weeds on 2021/06/04.
-//
-
 import UIKit
 
 class RecommendListViewController: UIViewController {
-    
+
     @IBOutlet weak var sectionTitle: UILabel!
-    
-    let viewModel = RecommendListViewModel()
+    let viewModel = RecommentListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,36 +19,30 @@ class RecommendListViewController: UIViewController {
     }
 }
 
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
-
 extension RecommendListViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCell", for: indexPath) as? RecommendCell else {
             return UICollectionViewCell()
         }
         
-        let movie = viewModel.item(at: indexPath.row)
+        let movie = viewModel.item(at: indexPath.item)
         cell.updateUI(movie: movie)
         return cell
     }
-    
 }
 
-class RecommendListViewModel {
+
+extension RecommendListViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 160)
+    }
+}
+
+class RecommentListViewModel {
     enum RecommendingType {
         case award
         case hot
@@ -64,12 +50,10 @@ class RecommendListViewModel {
         
         var title: String {
             switch self {
-            case .award:
-                return "아카데미 호평 영화"
-            case .hot:
-                return "취향저격 HOT 콘텐츠"
-            case .my:
-                return "내가 찜한 콘텐츠"
+            case .award: return "아카데미 호평 영황"
+            case .hot: return "취한저격 HOT 콘텐츠"
+            case .my: return "내가 찜한 콘텐츠"
+            
             }
         }
     }
@@ -103,16 +87,16 @@ class RecommendCell: UICollectionViewCell {
 }
 
 class MovieFetcher {
-    static func fetch(_ type: RecommendListViewModel.RecommendingType) -> [DummyItem] {
+    static func fetch(_ type: RecommentListViewModel.RecommendingType) -> [DummyItem] {
         switch type {
         case .award:
-            let movies = (1..<10).map {DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)}
+            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
             return movies
         case .hot:
-            let movies = (10..<19).map {DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)}
+            let movies = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
             return movies
         case .my:
-            let movies = (1..<10).map {$0 * 2}.map {DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!)}
+            let movies = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
             return movies
         }
     }
