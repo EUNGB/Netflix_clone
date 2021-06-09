@@ -35,6 +35,9 @@
                                         <state key="selected" image="pause.fill" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                         </state>
+                                        <connections>
+                                            <action selector="togglePlayButton:" destination="lDR-fb-SJX" eventType="touchUpInside" id="hbR-i2-Msz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iCe-xq-eUq">
                                         <rect key="frame" x="748" y="16" width="40" height="40"/>

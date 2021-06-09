@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class HomeViewController: UIViewController {
 
@@ -41,4 +42,22 @@ class HomeViewController: UIViewController {
     }
     
 
+    @IBAction func homeMoviePlay(_ sender: Any) {
+        SearchAPI.search("interstella") { movies in
+            guard let interstella = movies.first else {
+                return
+            }
+            
+            let url = URL(string: interstella.previewURL)!
+            let item = AVPlayerItem(url: url)
+            
+            DispatchQueue.main.async {
+                let sb = UIStoryboard(name: "Player", bundle: nil)
+                let vc = sb.instantiateViewController(identifier: "PlayerVC") as! PlayerViewController
+                vc.player.replaceCurrentItem(with: item)
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: false, completion: nil)
+            }
+        }
+    }
 }
